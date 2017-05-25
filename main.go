@@ -14,8 +14,9 @@ var s = bufio.NewScanner(os.Stdin)
 
 func main() {
 	prob := []func(){allPrimes, largestPalindrome, smallestMult,
-		sumSqrDif, tenThousandPrime}
-	if len(os.Args[1]) >= 1 {
+		sumSqrDif, tenThousandPrime, greatestProductOneThousand, pythaghorasTriplet,
+		sumPrimesBelow2M}
+	if len(os.Args) > 1 {
 		ex, err := strconv.Atoi(os.Args[1])
 		if err == nil {
 			prob[ex-1]()
@@ -28,8 +29,11 @@ func main() {
 		"3 - Smallest number that can be evenly divided by all 1..20",
 		"4 - Sum sqr diff of 1000",
 		"5 - 10001st prime number",
+		"6 - Greatest multiplication of 13 numbrs from 1000 digit numbr",
+		"7 - Pythagoras triplet where a + b + c = 1000",
+		"8 - Sum of all primes below 2m",
 	}
-	fmt.Printf("%v \nHello what's the problem number? ", probName)
+	fmt.Printf("%v \nHello what's the problem number?", probName)
 	num, err := strconv.Atoi(readString())
 
 	if err != nil {
