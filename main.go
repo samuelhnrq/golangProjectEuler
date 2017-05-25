@@ -13,11 +13,21 @@ import (
 var s = bufio.NewScanner(os.Stdin)
 
 func main() {
-	prob := []func(){allPrimes, largestPalindrome, smallestMult}
+	prob := []func(){allPrimes, largestPalindrome, smallestMult,
+		sumSqrDif, tenThousandPrime}
+	if len(os.Args[1]) >= 1 {
+		ex, err := strconv.Atoi(os.Args[1])
+		if err == nil {
+			prob[ex-1]()
+			return
+		}
+	}
 	probName := []string{
 		"1 - Biggest possible prime",
 		"2 - Largest palindrome of three digit multiplication",
 		"3 - Smallest number that can be evenly divided by all 1..20",
+		"4 - Sum sqr diff of 1000",
+		"5 - 10001st prime number",
 	}
 	fmt.Printf("%v \nHello what's the problem number? ", probName)
 	num, err := strconv.Atoi(readString())
