@@ -15,7 +15,7 @@ var s = bufio.NewScanner(os.Stdin)
 func main() {
 	prob := []func(){allPrimes, largestPalindrome, smallestMult,
 		sumSqrDif, tenThousandPrime, greatestProductOneThousand, pythaghorasTriplet,
-		sumPrimesBelow2M}
+		sumPrimesBelow2M, highestOfGrid}
 	if len(os.Args) > 1 {
 		ex, err := strconv.Atoi(os.Args[1])
 		if err == nil {
@@ -32,6 +32,7 @@ func main() {
 		"6 - Greatest multiplication of 13 numbrs from 1000 digit numbr",
 		"7 - Pythagoras triplet where a + b + c = 1000",
 		"8 - Sum of all primes below 2m",
+		"9 - Highest 4 elements product of grid",
 	}
 	fmt.Printf("%v \nHello what's the problem number?", probName)
 	num, err := strconv.Atoi(readString())
