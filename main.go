@@ -13,50 +13,25 @@ import (
 var s = bufio.NewScanner(os.Stdin)
 
 func main() {
-	prob := []func(){allPrimes, largestPalindrome, smallestMult,
+	prob := []func(){nil, nil, allPrimes, largestPalindrome, smallestMult,
 		sumSqrDif, tenThousandPrime, greatestProductOneThousand, pythaghorasTriplet,
 		sumPrimesBelow2M, highestOfGrid, nthTriangleNumber, largeSum, prob14, prob15,
 		prob16}
-	if len(os.Args) > 1 {
-		ex, err := strconv.Atoi(os.Args[1])
-		if err == nil {
-			t := time.Now().UnixNano()
-			prob[ex-1]()
-			t = time.Now().UnixNano() - t
-			fmt.Println("Time:", t)
-			return
-		}
+	if len(os.Args) < 1 {
+		fmt.Println("Provide the problem number")
 	}
-	probName := []string{
-		"01 - Biggest possible prime",
-		"02 - Largest palindrome of three digit multiplication",
-		"03 - Smallest number that can be evenly divided by all 1..20",
-		"04 - Sum sqr diff of 1000",
-		"05 - 10001st prime number",
-		"06 - Greatest multiplication of 13 numbrs from 1000 digit numbr",
-		"07 - Pythagoras triplet where a + b + c = 1000",
-		"08 - Sum of all primes below 2m",
-		"09 - Highest 4 elements product of grid",
-		"10 - First triangle number to have 500 dividends",
-		"11 - Large sum",
-		"12 - Collatz sequence",
-	}
-	fmt.Printf("%v\nHello what's the problem number?", probName)
-	num, err := strconv.Atoi(readString())
-
+	ex, err := strconv.Atoi(os.Args[1])
 	if err != nil {
-		fmt.Println("Invalid number!")
-		os.Exit(1)
+		fmt.Println("Invalid number")
 	}
-	num--
-	if len(prob) > num {
-		t := time.Now().UnixNano()
-		prob[num]()
-		t = time.Now().UnixNano() - t
-		fmt.Println("\nTotal time", t, "nanoseconds")
-	} else {
-		fmt.Println("Problem number not found")
+	if ex > len(prob) {
+		fmt.Println("Problem not implemented yet.")
 	}
+	t := time.Now().UnixNano()
+	prob[ex-1]()
+	t = time.Now().UnixNano() - t
+	fmt.Printf("Time: %dns %dms\n", t, t/1000000)
+	return
 
 }
 
